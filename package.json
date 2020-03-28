@@ -1,0 +1,22 @@
+{
+  "name": "tubfestivalen",
+  "version": "1.0.0",
+  "description": "Voting system for tubfestivalen",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMole3/tubfestivalen.git"
+  },
+  "author": "TheMole3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheMole3/tubfestivalen/issues"
+  },
+  "homepage": "https://github.com/TheMole3/tubfestivalen#readme",
+  "dependencies": {
+    "request-ip": "^2.1.3"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "votes": [
+    {
+      "ip": "::ffff:192.168.10.1",
+      "bidrag": "rullaRunt2"
+    },
+    {
+      "ip": "::ffff:109.201.133.26",
+      "bidrag": "rullaRunt2"
+    },
+    {
+      "ip": "::ffff:127.0.0.1",
+      "bidrag": "GBG"
+    }
+  ]
+}
