@@ -1,60 +1,23 @@
+function shuffleArray(array) {for (var i = array.length - 1; i > 0; i--) {var j = Math.floor(Math.random() * (i + 1));var temp = array[i];array[i] = array[j];  array[j] = temp;};return array;}
+
 /* Bidrag */
-var bidragsArray = [
-  {
-    thumb: "/bidrag/rullaRunt.jpg",
-    name: "RULLA RUNT",
-    artist: "Buller ft. GLOBBY, GRAYUBOI, KLADD",
-    audio: "/bidrag/rullaRunt.mp3",
-    nameDefine: "rullaRunt"
-  },  {
-    thumb: "/bidrag/gbg.jpg",
-    name: "GBG",
-    artist: "Buller",
-    audio: "/bidrag/gbg.mp3",
-    nameDefine: "GBG"
-  },  {
-    thumb: "/bidrag/IdontLikeYou.jpg",
-    name: "I DON'T LIKE YOU",
-    artist: "Buller ft. Anomaly, Teryos, GLOBBY, GRAY",
-    audio: "/bidrag/IdontLikeYou.mp3",
-    nameDefine: "IdontLikeYou"
-  },  {
-    thumb: "/bidrag/christianVirgin.jpg",
-    name: "CHRISTIAN VIRGIN",
-    artist: "GRAYUBOI feat. buller, GLOBBY, Kladd",
-    audio: "/bidrag/christianVirgin.mp3",
-    nameDefine: "christianVirgin"
-  }
-]
 
-bidragsArray.forEach((item, i) => {
-  addBidrag(item)
-});
-
-new SimpleBar($('#bidragsList')[0], {
-  autoHide: false,
-});
-
-function addBidrag(bidrag) {
-  bidrag.object = $(`
-    <li class="bidrag">
-      <img class="thumb" src="${bidrag.thumb}">
-      <button data-bidrag="${bidrag.nameDefine}" class='playButton'></button>
-      <span class="SongInfo">${bidrag.name}<br><div class="artist">${bidrag.artist}</div></span>
-      <button data-bidrag="${bidrag.nameDefine}" onclick="vote(this)" class=voteButton>Rösta</button>
-      <audio id="${bidrag.nameDefine}Player">
-        <source src="${bidrag.audio}" type="audio/mp3" />
-      </audio>
-    </li>
-  `).appendTo('#bidragsList')
-
-  if(localStorage.voted) {
-    $('.voteButton').prop( "disabled", true ).addClass('DeVoteButton').removeClass('voteButton')
-  }
+if(localStorage.voted) {
+  window.location.href = '/results';
 }
 
+var bidragsArray = []
+$.getJSON( "/bidrag.json", function( data ) {
+  bidragsArray = shuffleArray(data);
+  var itemsProcessed = 0;
+  bidragsArray.forEach((item, i) => {
+    addBidrag(item)
+  });
+})  .fail(function() {
+  alert('Något gick fel vid laddningen av bidragen.  Testa att ladda om sidan, om felet kvarstår skicka ett mail till hugo@themole.tk')
+})
 
-$('.playButton').click(function() {
+$('body').on("click", '.playButton', function() {
   var audioplayer = document.getElementById($(this).data('bidrag') + "Player");
   if (audioplayer.paused) {
      audioplayer.play();
@@ -66,15 +29,43 @@ $('.playButton').click(function() {
   }
 })
 
+new SimpleBar($('#bidragsList')[0], {
+  autoHide: false,
+});
+
+var bidragsProcessed = 0;
+function addBidrag(bidrag) {
+  bidragsProcessed++
+  bidrag.object = $(`
+    <li class="bidrag">
+      <img class="thumb" src="${bidrag.thumb}">
+      <button data-bidrag="${bidrag.nameDefine}" class='playButton'></button>
+      <span class="SongInfo">${bidrag.name}<br><div class="artist">${bidrag.artist}</div></span>
+      <button data-bidrag="${bidrag.nameDefine}" onclick="vote(this)" class=voteButton>Rösta</button>
+      <audio preload="none" id="${bidrag.nameDefine}Player">
+        <source src="${bidrag.audio}" type="audio/mp3" />
+      </audio>
+    </li>
+  `).appendTo('.simplebar-content')
+
+  if(localStorage.voted) {
+    $('.voteButton').prop( "disabled", true ).addClass('DeVoteButton').removeClass('voteButton')
+  }
+  if(bidragsProcessed === bidragsArray.length) {setTimeout(function() {$('#loading').fadeOut('fast')},2000)}
+}
+
+
 function vote(e) {
   var name = bidragsArray.find(function(element) {
     return element.nameDefine == $(e).data('bidrag');
   }).name
   if(confirm('Vill du rösta på ' + name+ '? \nDu kan inte ändra din röst senare!')) {
     $.get('/vote', {vote: $(e).data('bidrag')}, function(e) {
-    	if(e = 'voted') alert('Du har redan röstat!')
+      if(e == 'country') return alert('Tyvärr kan man bara rösta om man är i Sverige')
+    	if(e == 'voted') alert('Du har redan röstat!')
       localStorage.voted = true
       $('.voteButton').prop( "disabled", true ).addClass('DeVoteButton').removeClass('voteButton')
+      window.location.href = '/results';
     })
   }
 }
@@ -84,44 +75,44 @@ function vote(e) {
 /* Floating Images */
 var imgArray = [
   {
-    src: "/img/bullerTrans.png",
+    src: "/img/bullertrans.png",
     name: "buller"
   },
   {
-    src:"/img/grayTrans.png",
+    src:"/img/graytrans.png",
     name: "gray"
   },
   {
-    src:"/img/globbyTrans.png",
+    src:"/img/globbytrans.png",
     name: "globby"
   },
   {
-    src:"/img/kladdTrans.png",
+    src:"/img/kladdtrans.png",
     name: "kladd"
   },
   {
-    src:"/img/globbyTrans.png",
-    name: "globby"
+    src:"/img/globbytrans2.png",
+    name: "globby2"
   },
   {
-    src:"/img/grayTrans.png",
-    name: "gray"
+    src:"/img/graytrans2.png",
+    name: "gray2"
   },  {
-    src:"/img/bullerTrans.png",
-    name: "buller"
+    src:"/img/bullertrans2.png",
+    name: "buller2"
   },
   {
-    src:"/img/kladdTrans.png",
-    name: "kladd"
+    src:"/img/kladdtrans2.png",
+    name: "kladd2"
   }
 ]
 
 imgArray.forEach((item, i) => {
   item.object = $(`<img class="floater" src="${item.src}">`).appendTo('#backgroundFloaters')
 
-  var left = (Math.random()*$('#backgroundFloaters').width()) + (Math.random()*($('#backgroundFloaters').width()/20)-($('#backgroundFloaters').width()/40))
-  var top = (Math.random()*$('#backgroundFloaters').height()) + (Math.random()*($('#backgroundFloaters').height()/20)-($('#backgroundFloaters').height()/40))
   var width = Math.random()*30 + 10
+  var left = (Math.random()*$('#backgroundFloaters').width()) - width
+  var top = (Math.random()*$('#backgroundFloaters').height()) - item.object.height()
   var zIndex = Math.floor(Math.random()*5)
   item.object.css('left', left);
   item.object.css('top', top);
@@ -132,7 +123,7 @@ imgArray.forEach((item, i) => {
 });
 
 function floatImage(object) {
-var width = Math.random()*30 + 10
+  var width = Math.random()*30 + 10
   var left = (Math.random()*$('#backgroundFloaters').width()) - width
   var top = (Math.random()*$('#backgroundFloaters').height()) - object.height()
   var duration = Math.random()*20000+5000

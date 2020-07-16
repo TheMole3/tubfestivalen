@@ -1,0 +1,21 @@
+body {
+  margin:0;
+}
+
+#charting {
+  position: absolute;
+  width: 95vw;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  height: 98vh;
+}
+
+#credit {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  z-index: 100;
+  font-size: calc(2vh);
+
+  font-family: 'Oswald', sans-serif;
+}

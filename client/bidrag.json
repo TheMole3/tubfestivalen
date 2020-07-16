@@ -1,0 +1,63 @@
+[
+  {
+    "thumb": "/bidrag/detarjufredag.jpg",
+    "name": "Det är ju fredag",
+    "artist": "TingGang",
+    "audio": "/bidrag/detarjufredag.mp3",
+    "nameDefine": "detarjufredag"
+  },{
+    "thumb": "/bidrag/eldvatten.jpg",
+    "name": "Genom Eld & Vatten",
+    "artist": "Schlagerpunkarna",
+    "audio": "/bidrag/eldvatten.mp3",
+    "nameDefine": "eldvatten"
+  },{
+    "thumb": "/bidrag/gate2020.jpg",
+    "name": "Gate 2200",
+    "artist": "Mick C",
+    "audio": "/bidrag/gate2020.mp3",
+    "nameDefine": "gate2020"
+  },{
+    "thumb": "/bidrag/introvert.jpg",
+    "name": "INTRO (VERT)",
+    "artist": "FINSKA SNUBBEN",
+    "audio": "/bidrag/introvert.mp3",
+    "nameDefine": "introvert"
+  },{
+    "thumb": "/bidrag/ipv4.jpg",
+    "name": "IPv4.mp3",
+    "artist": "DJ Bahnhof ft. Schneider",
+    "audio": "/bidrag/ipv4.mp3",
+    "nameDefine": "ipv4"
+  },{
+    "thumb": "/bidrag/laggnerdittvapen.jpg",
+    "name": "Lägg ner ditt vapen",
+    "artist": "Borys",
+    "audio": "/bidrag/laggnerdittvapen.mp3",
+    "nameDefine": "laggnerdittvapen"
+  },{
+    "thumb": "/bidrag/morethanfriends.jpg",
+    "name": "More Than Friends",
+    "artist": "Moses Giovanni ft. Lydiet",
+    "audio": "/bidrag/morethanfriends.mp3",
+    "nameDefine": "morethanfriends"
+  },{
+    "thumb": "/bidrag/svek.jpg",
+    "name": "¨SVEK¨",
+    "artist": "SVEK",
+    "audio": "/bidrag/svek.mp3",
+    "nameDefine": "svek"
+  },{
+    "thumb": "/bidrag/telepati.jpg",
+    "name": "FUCK YOU",
+    "artist": "TELEPATI",
+    "audio": "/bidrag/telepati.mp3",
+    "nameDefine": "telepati"
+  },{
+    "thumb": "/bidrag/virokerparmesan.jpg",
+    "name": "Vi röker parmesan",
+    "artist": "LIL ÅKE FT. WILHELM KARLSSON",
+    "audio": "/bidrag/virokerparmesan.mp3",
+    "nameDefine": "virokerparmesan"
+  }
+]

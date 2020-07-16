@@ -1,3 +1,9 @@
+#Do not upload the database with IP adresses
+db.json
+
+#Do not upload the admin password
+config.json
+
 # Logs
 logs
 *.log
