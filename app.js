@@ -77,11 +77,11 @@ app.get('/vote', function(req, res) {
 });
 
 
-app.get('/', function(req, res) {
+app.get('/vote', function(req, res) {
   sendFile(__dirname + '/client/index.html', res, req);
 }); // Send index
 
-app.get('/results', function(req, res) {
+app.get('/', function(req, res) {
   sendFile(__dirname + '/client/results/results.html', res, req);
 })
 
